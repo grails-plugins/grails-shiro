@@ -16,8 +16,7 @@ This project was derived from the Grails 2.x version
 (https://github.com/pledbrook/grails-shiro).
 
 We pretty much re-wrote the plugin for Grails 3 & 4 and to simplify the use, improve the documentation
-and make it easier to maintain. There are lots of changes please check out the
-https://github.com/nerdErg/grails-shiro/blob/master/docs/Guide.adoc[Guide] in the docs directory.
+and make it easier to maintain. There are lots of changes please check out the latest [Guide](https://grails-plugins.github.io/grails-shiro/snapshot/).
 
 ### Numbering
 
@@ -34,7 +33,8 @@ Versions up to 5.0.0 used in general the Grails major version it supports, follo
 
 ### Documentation and Source
 
-Please find the https://grails-plugins.github.io/grails-shiro/[documentation] on the plugin page. Source code including specific documentation for older Grails versions can be found in the *Branches*.
+Please find the [documentation](https://grails-plugins.github.io/grails-shiro/) on the plugin page. The source code is
+hosted in [grails-plugins/grails-shiro](https://github.com/grails-plugins/grails-shiro) on github.
 
 ## Installation
 
@@ -84,18 +84,20 @@ If you're implementing your security from scratch, then you can install grails-s
 grails shiro-quick-start
 ```
 
-See: https://github.com/nerdErg/grails-shiro/blob/master/docs/Guide.adoc#shiro-quick-start[grails shiro-quick-start].
+For more information see: [grails shiro-quick-start](https://grails-plugins.github.io/grails-shiro/latest/#shiro-quick-start).
 
 This will create a ShiroWildcardDbRealm in your `grails-app/realms` directory and make a ShiroUser and
 ShiroRole domain class. It will also create an AuthController to let you log in.
-Check out https://github.com/nerdErg/grails-shiro/blob/master/docs/Guide.adoc#wildcard-db-realm[Wildcard DB Realm] for how you might populate a couple of users using Boostrap.groovy.
+Check out [Wildcard DB Realm](https://grails-plugins.github.io/grails-shiro/latest/#wildcard-db-realm) for how you might populate a couple of users using Boostrap.groovy.
 
 Now, to Control access to a Controller add an Interceptor for that controller using
 
- grails create-shiro-controller-interceptor MyController
+```
+grails create-shiro-controller-interceptor MyController
+```
 
-See: https://github.com/nerdErg/grails-shiro/blob/master/docs/Guide.adoc#create-shiro-controller-interceptor[ create-shiro-controller-interceptor]
-which will add https://github.com/nerdErg/grails-shiro/blob/master/docs/Guide.adoc#permission-string-conventions[access control by convention].
+For details see: [create-shiro-controller-interceptor](https://grails-plugins.github.io/grails-shiro/latest/#create-shiro-controller-interceptor)
+which will add [access control by convention](https://grails-plugins.github.io/grails-shiro/latest/#permission-string-conventions).
 
 ## Version change log
 
@@ -144,8 +146,7 @@ dependencies {
 
 ### version 3.3 & 4.3
 
-* Fixed Annotation redirect missing context path - https://github.com/nerdErg/grails-shiro/issues/16
-* Upgrade to shiro 1.5.3
+* Fixed Annotation redirect missing context path - https://github.com/grails-plugins/grails-shiro/issues/16
 
 WARNING: This introduces a small breaking change. Annotations now use the login and unauthorized settings not URL Mappings
 to set where they redirect to.
@@ -161,31 +162,20 @@ to set where they redirect to.
 ### version 3.1
 
 * Added ability to set the remember me cipherKey or the length of the randomly generated key
-* Fix for onNotAuthenticated and onUnauthorized not working correctly (https://github.com/nerdErg/grails-shiro/pull/6[Can't be invoked on metaclass])
+* Fix for onNotAuthenticated and onUnauthorized not working correctly [Can't be invoked on metaclass](https://github.com/grails-plugins/grails-shiro/pull/6)
 
 ### version 3.0
 
-* re-write from old Grails 2 plugin see updates in the https://github.com/nerdErg/grails-shiro/blob/master/docs/Guide.adoc[Guide]
+* re-write from old Grails 2 plugin see updates in the [Guide](https://grails-plugins.github.io/grails-shiro/latest/)
 
 ## Building from source
 
 To build the plugin yourself and install it from this repo:
 
 1. clone or fork this repo to your machine
-2. run `gradle publishToMavenLocal` and that will build, test, install it to your local maven repo (~/.m2)
+2. run `gradle publishToMavenLocal` and that will build, test, install it to your local maven repo (`~/.m2`)
 3. profit!
 
-## Publishing
-
-Refer to https://grails.org/blog/2021-04-07-publish-grails-plugin-to-maven-central.html
-
-If you have the signing and repository credentials, you can run:
-
-```
- ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
-```
-
-But you *should* publish to staging and check everything first.
 
 ## Kudos
 

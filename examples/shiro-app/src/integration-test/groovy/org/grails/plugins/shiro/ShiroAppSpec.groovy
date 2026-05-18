@@ -17,4 +17,27 @@ class ShiroAppSpec extends ContainerGebSpec {
             currentUrl.endsWith('/auth/login?targetUri=%2F')
             title == 'Login'
     }
+
+    void 'correct login should lead to home page'() {
+        when: 'visiting the login page'
+            go('/auth/login')
+
+        then: 'redirected to the login page'
+            title == 'Login'
+
+        when:
+            $('#username').value('demo')
+            $('#password').value('secret')
+            $('form').find('input', type: 'submit').click()
+
+        then:
+            title == 'Welcome to Grails'
+
+        when:
+         $('a.btn.btn-primary').click()
+
+        then:
+          title == 'Login'
+          $('div.alert-info').text() == 'You need to log in to access the page at /.'
+    }
 }
