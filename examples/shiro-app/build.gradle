@@ -6,8 +6,11 @@ version = projectVersion
 group = 'grails.plugins.shiro'
 
 dependencies {
-    profile 'org.apache.grails.profiles:web'
-    console 'org.apache.grails:grails-console'
+    profile platform("org.apache.grails:grails-bom:$grailsVersion")
+    profile "org.apache.grails.profiles:web"
+    profile "org.apache.grails:grails-shell-cli:$grailsVersion"
+    console platform("org.apache.grails:grails-bom:$grailsVersion")
+    console "org.apache.grails:grails-console"
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
     implementation project(':grails-shiro')
