@@ -1,6 +1,8 @@
 package org.grails.plugins.shiro
 import grails.plugin.geb.ContainerGebSpec
 import grails.testing.mixin.integration.Integration
+import org.grails.plugins.shiro.pages.MainPage
+import org.grails.plugins.shiro.pages.LoginPage
 
 /**
  * See https://grails.apache.org/docs/latest/guide/testing.html#functionalTesting and https://groovy.apache.org/geb/manual/current/
@@ -14,30 +16,28 @@ class ShiroAppSpec extends ContainerGebSpec {
             go('/')
 
         then: 'redirected to the login page'
+            at LoginPage
             currentUrl.endsWith('/auth/login?targetUri=%2F')
-            title == 'Login'
     }
 
     void 'correct login should lead to home page'() {
         when: 'visiting the login page'
-            go('/auth/login')
+            to LoginPage
 
-        then: 'redirected to the login page'
-            title == 'Login'
+        then: 'at the login page'
+            at LoginPage
 
         when:
-            $('#username').value('demo')
-            $('#password').value('secret')
-            $('form').find('input', type: 'submit').click()
+            login('demo', 'secret')
 
         then:
-            title == 'Welcome to Grails'
+            at MainPage
 
         when:
          $('a.btn.btn-primary').click()
 
         then:
-          title == 'Login'
-          $('div.alert-info').text() == 'You need to log in to access the page at /.'
+          at LoginPage
+          alertMessage.text() == 'You need to log in to access the page at /.'
     }
 }
