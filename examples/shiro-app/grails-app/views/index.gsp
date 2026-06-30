@@ -13,7 +13,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Welcome to Grails</title>
+    <title>Welcome to Grails Shiro</title>
     <meta name="layout" content="main"/>
     <asset:stylesheet src="welcome.css"/>
 </head>

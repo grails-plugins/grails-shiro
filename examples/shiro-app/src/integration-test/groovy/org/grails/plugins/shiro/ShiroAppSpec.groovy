@@ -1,6 +1,7 @@
 package org.grails.plugins.shiro
 import grails.plugin.geb.ContainerGebSpec
 import grails.testing.mixin.integration.Integration
+import org.grails.plugins.shiro.pages.MainPage
 
 /**
  * See https://grails.apache.org/docs/latest/guide/testing.html#functionalTesting and https://groovy.apache.org/geb/manual/current/
@@ -31,7 +32,7 @@ class ShiroAppSpec extends ContainerGebSpec {
             $('form').find('input', type: 'submit').click()
 
         then:
-            title == 'Welcome to Grails'
+            at MainPage
 
         when:
          $('a.btn.btn-primary').click()
